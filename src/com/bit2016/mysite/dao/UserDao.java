@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpSession;
+
 import com.bit2016.mysite.vo.UserVo;
 
 public class UserDao {
@@ -140,7 +142,7 @@ public class UserDao {
 		
 		try {
 			conn = getConnection();
-			
+
 			String sql = "UPDATE users SET name = ?, password = ?, gender = ? where no= ?";
 			pstmt = conn.prepareStatement(sql);
 			
