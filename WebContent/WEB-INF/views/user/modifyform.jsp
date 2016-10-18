@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@page import="com.bit2016.mysite.vo.UserVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
@@ -9,7 +12,7 @@
 <head>
 <title>mysite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="/mysite3/assets/css/user.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="container">
@@ -37,6 +40,7 @@
 						%>
 						<label>여</label> <input type="radio" name="gender" value="female" >
 						<label>남</label> <input type="radio" name="gender" value="male" checked="checked" >
+						
 						<% } else { %>
 						<label>여</label> <input type="radio" name="gender" value="female" checked="checked">
 						<label>남</label> <input type="radio" name="gender" value="male" >
