@@ -8,33 +8,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bit2016.mysite.action.main.MainActionFactory;
-import com.bit2016.mysite.action.user.UserActionFactory;
+import com.bit2016.mysite.action.guestbook.GuestbookActionFactory;
 import com.bit2016.web.Action;
 import com.bit2016.web.ActionFactory;
 
-
-@WebServlet("/user")
-public class UserServlet extends HttpServlet {
+@WebServlet("/guestbook")
+public class GuestBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding( "utf-8" );
 		
-		String actionName = request.getParameter("a");
-		System.out.println(actionName);
-		ActionFactory af = new UserActionFactory();
-		System.out.println(af);
-		Action action = af.getAction(actionName);
-		System.out.println(action);
+		String actionName = request.getParameter( "a" );
 		
+		ActionFactory af = new GuestbookActionFactory();
+		Action action = af.getAction( actionName );
 		action.execute(request, response);
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }
