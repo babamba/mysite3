@@ -14,6 +14,8 @@ public class JoinSuccess implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("joinSuccess");
+
 		WebUtil.forward(request, response, "/WEB-INF/views/user/joinsuccess.jsp");
 
 	}

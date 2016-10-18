@@ -13,7 +13,7 @@ import com.bit2016.mysite.vo.UserVo;
 public class UserDao {
 	private Connection getConnection() throws SQLException {
 		Connection conn = null;
-
+		System.out.println("UserBookDao");
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			String url = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -21,7 +21,7 @@ public class UserDao {
 			} catch (ClassNotFoundException e) {
 				System.out.println("드라이버 로딩 실패: " + e);
 			}
-		return conn;
+		return conn;	
 	}
 	
 	// 인증(로그인)

@@ -14,6 +14,7 @@ public class LoginFormAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("로그인폼액션 실행됨");
 		WebUtil.forward(request, response, "/WEB-INF/views/user/loginform.jsp");
 
 	}

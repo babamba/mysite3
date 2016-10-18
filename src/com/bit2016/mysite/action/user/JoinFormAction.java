@@ -15,6 +15,8 @@ public class JoinFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		System.out.println("joinformAction");
+
 		WebUtil.forward(request, response, "/WEB-INF/views/user/joinform.jsp");
 		
 		

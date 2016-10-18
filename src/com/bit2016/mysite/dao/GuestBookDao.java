@@ -15,6 +15,7 @@ import com.bit2016.mysite.vo.GuestBookVo;
 public class GuestBookDao {
 
 	private Connection getConnection() throws SQLException {
+		System.out.println("GuestBookDao");
 		Connection conn = null;
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");

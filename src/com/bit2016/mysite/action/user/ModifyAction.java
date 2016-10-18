@@ -17,7 +17,7 @@ public class ModifyAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	
+		System.out.println("ModifyAction");
 		HttpSession session = request.getSession();
 		UserVo uservo = (UserVo) session.getAttribute("authUser");
 		Long number = uservo.getNo();

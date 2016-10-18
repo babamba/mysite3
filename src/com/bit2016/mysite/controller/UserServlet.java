@@ -21,14 +21,18 @@ public class UserServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		System.out.println("UserBookServlet");
 		
 		String actionName = request.getParameter("a");
-		System.out.println(actionName);
-		ActionFactory af = new UserActionFactory();
-		System.out.println(af);
-		Action action = af.getAction(actionName);
-		System.out.println(action);
+		System.out.println("액션네임에 쿼리스트링 파라미터 받아오기"+actionName);
 		
+		ActionFactory af = new UserActionFactory();
+		System.out.println("유저액션팩토리 객체생성 "+af);
+		
+		Action action = af.getAction(actionName);
+		System.out.println("유저액션팩토리 객체에 있는 겟액션을 통해 쿼리스트링에 맞는 액션 담기"+action);
+		
+		System.out.println("담아온 액션 실행");
 		action.execute(request, response);
 	}
 

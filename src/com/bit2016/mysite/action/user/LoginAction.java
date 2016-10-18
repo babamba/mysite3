@@ -16,6 +16,8 @@ public class LoginAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("LoginAction");
+
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
