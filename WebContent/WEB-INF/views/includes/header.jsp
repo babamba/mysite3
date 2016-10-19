@@ -9,12 +9,12 @@
 			<ul>
 			<c:choose>
 			 <c:when test="${empty authUser }">
-					<li><a href="/mysite3/user?a=loginform">로그인</a></li>
-					<li><a href="/mysite3/user?a=joinform">회원가입</a></li>
+					<li><a href="${pageContext.request.contextPath}/user?a=loginform">로그인</a></li>
+					<li><a href="${pageContext.request.contextPath}/user?a=joinform">회원가입</a></li>
 				</c:when>
 				<c:otherwise>
-					<li><a href="/mysite3/user?a=modifyform">회원정보수정</a></li>
-					<li><a href="/mysite3/user?a=logout">로그아웃</a></li>
+					<li><a href="${pageContext.request.contextPath}/user?a=modifyform">회원정보수정</a></li>
+					<li><a href="${pageContext.request.contextPath}/user?a=logout">로그아웃</a></li>
 					<li>${authUser.name}님 안녕하세요 ^^;</li>
 				</c:otherwise>	
 			</c:choose>
