@@ -16,7 +16,7 @@ public class WriteAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("writeaction");
+		System.out.println("write");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
@@ -28,7 +28,7 @@ public class WriteAction implements Action {
 		BoardDao dao = new BoardDao();
 		dao.write(vo);
 		
-		WebUtil.redirect(request, response, "/mysite3/board");
+		WebUtil.redirect(request, response, "/WEB-INF/views/board/list.jsp");
 	}
 
 }

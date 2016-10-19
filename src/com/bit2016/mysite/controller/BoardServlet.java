@@ -18,20 +18,20 @@ import com.bit2016.web.ActionFactory;
 public class BoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		System.out.println("BoardServlet");
+
 		String actionName = request.getParameter("a");
-		
 		ActionFactory af = new BoardActionFactory();
+
 		Action action = af.getAction(actionName);
-		
+
 		action.execute(request, response);
 	}
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

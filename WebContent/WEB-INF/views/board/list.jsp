@@ -26,75 +26,46 @@
 						<th>조회수</th>
 						<th>작성일</th>
 						<th>&nbsp;</th>
-					</tr>				
-					<tr>
-						<td>5</td>
-						<td class="left">
-							<a href="">세 번째 글입니다.</a>
-						</td>
-						<td>안대혁</td>
-						<td>3</td>
-						<td>2015-10-11 12:04:20</td>
-						<td><a href="" class="del">삭제</a></td>
 					</tr>
-					<tr>
-						<td>4</td>
-						<td class="left">
-							<a href="">두 번째 글입니다.</a>
-						</td>
-						<td>안대혁</td>
-						<td>3</td>
-						<td>2015-10-02 12:04:12</td>
-						<td><a href="" class="del">삭제</a></td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td class="left" style="padding-left:${20*vo.depth}px">  <!-- 뎁스가 0보다 작은지 choose문으로 해서 이미지 삽입할지 안할지 넣기 -->
-							<img src="${pageContext.request.contextPath }/assets/images/reply.png">
-							<a href="">두 번째 글의 답글 입니다.</a>
-						</td>
-						<td>안대혁</td>
-						<td>3</td>
-						<td>2015-10-02 12:04:12</td>
-						<td><a href="" class="del">삭제</a></td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td class="left" style="padding-left:40px">
-							<img src="${pageContext.request.contextPath }/assets/images/reply.png">
-							<a href="">답글의 답글 입니다.</a>
-						</td>
-						<td>안대혁</td>
-						<td>3</td>
-						<td>2015-10-02 12:04:12</td>
-						<td><a href="" class="del">삭제</a></td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td class="left">
-							<a href="">첫 번째 글입니다.</a>
-						</td>
-						<td>안대혁</td>
-						<td>3</td>
-						<td>2015-09-25 07:24:32</td>
-						<td><a href="" class="del">삭제</a></td>
-					</tr>
+					<c:forEach items="${list }"	var="vo" varStatus="status">			
+						<tr>
+							<td>${totalCount - (page - 1)*size - status.index }</td>
+							<c:choose>
+								<c:when test="${vo.depth > 0 }">
+									<td class="left" style="padding-left:${20*vo.depth }px">
+										<img src="${pageContext.request.contextPath }/assets/images/reply.png">
+										<a href="">${vo.title }</a>
+									</td>
+								</c:when>
+								<c:otherwise>
+									<td class="left">
+										<a href="">${vo.title }</a>
+									</td>
+								</c:otherwise>
+							</c:choose>
+							<td>${vo.userName }</td>
+							<td>${vo.hit }</td>
+							<td>${vo.regDate }</td>
+							<td><a href="" class="del">삭제</a></td>
+						</tr>
+					</c:forEach>
 				</table>
 				<div class="pager">
 					<ul>
 						<li><a href="">◀</a></li>
 						<li><a href="">1</a></li>
 						<li><a href="">2</a></li>
-						<li class="selected">3</li> <!-- 현재페이지 -->
-					<!-- 	<li><a href="">4</a></li> -->
-						 <li>4</li>  <!-- 내용이 없을때  -->
-						<li><a href="">5</a></li>
+						<li class="selected">3</li>
+						<li>4</li>
+						<li>5</li>
 						<li><a href="">▶</a></li>
 					</ul>
 				</div>				
 				<div class="bottom">
-					<a href="" id="new-book">글쓰기</a>
-				</div>				
+					<c:if test="${not empty authUser }">
+						<a href="${pageContext.request.contextPath }/board?a=writeform" id="new-book">글쓰기</a>
+					</c:if>
+				</div>
 			</div>
 		</div>
 		<c:import url="/WEB-INF/views/includes/navigation.jsp">

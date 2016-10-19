@@ -7,14 +7,14 @@ public class BoardActionFactory extends ActionFactory {
 	
 	@Override
 	public Action getAction(String actionName) {
-		System.out.println("boardactionFactory");
 		Action action = null;
 		
-		if("write".equals(actionName)){
-			System.out.println("write action");
+		if("writeform".equals(actionName)){
+			action = new WriteFormAction();
+		}else if("write".equals(actionName)){
 			action = new WriteAction();
-		}else{
-			
+		}else {
+			action = new ListAction();
 		}
 		
 		
