@@ -23,6 +23,7 @@ public class BoardServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		System.out.println("BoardServlet");
 		String actionName = request.getParameter("a");
+		
 		ActionFactory af = new BoardActionFactory();
 		Action action = af.getAction(actionName);
 		

@@ -11,11 +11,14 @@ public class BoardActionFactory extends ActionFactory {
 		Action action = null;
 		
 		if("write".equals(actionName)){
+			System.out.println("write action");
 			action = new WriteAction();
+		}else{
+			
 		}
 		
 		
-		return new ListAction();
+		return action;
 	}
 	
 }
