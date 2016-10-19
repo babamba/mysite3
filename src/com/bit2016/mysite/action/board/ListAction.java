@@ -13,13 +13,12 @@ import com.bit2016.web.Action;
 import com.bit2016.web.util.WebUtil;
 
 public class ListAction implements Action {
-	private static final int LIST_SIZE = 1;
-	private static final int PAGE_SIZE = 5;
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		System.out.println("listAction");
 		
 		BoardDao dao = new BoardDao();
-		List<BoardVo> list = new BoardDao().getList(PAGE_SIZE, LIST_SIZE);
+		List<BoardVo> list = new BoardDao().getList(10);
 		
 		request.setAttribute("list", list);
 		

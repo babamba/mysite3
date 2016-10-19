@@ -27,28 +27,29 @@
 						<th>작성일</th>
 						<th>&nbsp;</th>
 					</tr>
-					<c:forEach items="${list }"	var="vo" varStatus="status">			
+					<c:set var="count" value="${fn:length(list)}"/>
+						<c:forEach items="${list }" var="vo" varStatus="status">	
 						<tr>
-							<td>${totalCount - (page - 1)*size - status.index }</td>
+							<td>[${count - status.index }]</td>
 							<c:choose>
 								<c:when test="${vo.depth > 0 }">
 									<td class="left" style="padding-left:${20*vo.depth }px">
 										<img src="${pageContext.request.contextPath }/assets/images/reply.png">
-										<a href="">${vo.title }</a>
+										<a href ="${pageContext.request.contextPath }/board?a=view&no=${vo.no}">${vo.title }</a>
 									</td>
 								</c:when>
-								<c:otherwise>
-									<td class="left">
-										<a href="">${vo.title }</a>
-									</td>
-								</c:otherwise>
+									<c:otherwise>
+										<td class="left">
+											<a href="${pageContext.request.contextPath }/board?a=view&board_no=${vo.no}">${vo.title }">${vo.title }</a>
+										</td>
+									</c:otherwise>
 							</c:choose>
 							<td>${vo.userName }</td>
-							<td>${vo.hit }</td>
+							<td>${vo.hit}</td>
 							<td>${vo.regDate }</td>
-							<td><a href="" class="del">삭제</a></td>
+							<c:if test = "${vo.users_no==authUser.no}"><td><a href="" class="del">삭제</a></td></c:if>
 						</tr>
-					</c:forEach>
+						</c:forEach>
 				</table>
 				<div class="pager">
 					<ul>
@@ -62,7 +63,7 @@
 					</ul>
 				</div>				
 				<div class="bottom">
-					<c:if test="${not empty authUser }">
+					<c:if test="${not empty authUser}">
 						<a href="${pageContext.request.contextPath }/board?a=writeform" id="new-book">글쓰기</a>
 					</c:if>
 				</div>
