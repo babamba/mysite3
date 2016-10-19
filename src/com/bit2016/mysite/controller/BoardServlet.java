@@ -27,7 +27,6 @@ public class BoardServlet extends HttpServlet {
 		Action action = af.getAction(actionName);
 		
 		action.execute(request, response);
-		
 	}
 
 	
