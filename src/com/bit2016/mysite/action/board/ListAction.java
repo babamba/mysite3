@@ -15,12 +15,13 @@ import com.bit2016.web.util.WebUtil;
 public class ListAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-		System.out.println("listAction");
 		
-		BoardDao dao = new BoardDao();
-		List<BoardVo> list = new BoardDao().getList(10);
+		List<BoardVo> list = new BoardDao().getList(20);
+		new BoardDao();
+		
 		
 		request.setAttribute("list", list);
+		System.out.println("listAction");
 		
 		WebUtil.forward(request, response, "/WEB-INF/views/board/list.jsp" );
 	}

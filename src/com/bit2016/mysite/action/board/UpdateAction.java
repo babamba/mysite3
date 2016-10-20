@@ -14,14 +14,13 @@ import com.bit2016.mysite.vo.UserVo;
 import com.bit2016.web.Action;
 import com.bit2016.web.util.WebUtil;
 
-public class WriteAction implements Action {
+public class UpdateAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("write");
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
+//		String title = request.getParameter("title");
+//		String content = request.getParameter("content");
 
 		//세션
 		HttpSession session = request.getSession();
@@ -29,20 +28,21 @@ public class WriteAction implements Action {
 			WebUtil.redirect(request, response, "/main");
 			return;
 		}
+		
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
 		
 		UserVo uservo = new UserDao().get(authUser.getNo());
+		
 		BoardDao dao = new BoardDao();
 		BoardVo vo = new BoardVo();
 		
-		vo.setTitle(title);
-		vo.setContent(content);
+//		vo.setTitle(title);
+//		vo.setContent(content);
 
 		vo.setUserNo(uservo.getNo());
 		
 		dao.write(vo);
-		
-		WebUtil.redirect(request, response, "/mysite3/board");
+
 	}
 
 }

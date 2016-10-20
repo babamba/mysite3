@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bit2016.mysite.action.board.BoardActionFactory;
-import com.bit2016.mysite.action.main.MainActionFactory;
 import com.bit2016.web.Action;
 import com.bit2016.web.ActionFactory;
 

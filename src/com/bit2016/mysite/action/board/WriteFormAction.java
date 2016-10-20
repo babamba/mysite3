@@ -23,7 +23,9 @@ public class WriteFormAction implements Action {
 		if(session == null){
 			WebUtil.redirect(request, response, "/mysite3/board");
 		}
+		
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		
 		if(authUser == null){
 			WebUtil.redirect(request, response, "/mysite3/board");			
 			return;

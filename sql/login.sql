@@ -4,7 +4,7 @@ from users
 where email = 'babamba@gmail.com'
 and password ='1';
 
-select * from users;
+select* from users;
 
 UPDATE users SET name =? password = ? gender =? where no=?;
 

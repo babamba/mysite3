@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>mysite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link href="${pageContext.request.contextPath }/assets/css/board.css" rel="stylesheet" type="text/css">
@@ -27,27 +28,28 @@
 						<th>작성일</th>
 						<th>&nbsp;</th>
 					</tr>
+					
 					<c:set var="count" value="${fn:length(list)}"/>
-						<c:forEach items="${list }" var="vo" varStatus="status">	
+						<c:forEach items="${list}" var="vo" varStatus="status">	
 						<tr>
-							<td>[${count - status.index }]</td>
+							<td>[${count - status.index}]</td>
 							<c:choose>
 								<c:when test="${vo.depth > 0 }">
-									<td class="left" style="padding-left:${20*vo.depth }px">
-										<img src="${pageContext.request.contextPath }/assets/images/reply.png">
-										<a href ="${pageContext.request.contextPath }/board?a=view&no=${vo.no}">${vo.title }</a>
+									<td class="left" style="padding-left:${20*vo.depth}px">
+										<img src="${pageContext.request.contextPath}/assets/images/reply.png">
+											<a href ="${pageContext.request.contextPath }/board?a=view&no=${vo.no}">${list.title }</a>
 									</td>
 								</c:when>
 									<c:otherwise>
 										<td class="left">
-											<a href="${pageContext.request.contextPath }/board?a=view&board_no=${vo.no}">${vo.title }">${vo.title }</a>
+											<a href="${pageContext.request.contextPath }/board?a=view&no=${vo.no}">${vo.title }</a>
 										</td>
 									</c:otherwise>
 							</c:choose>
 							<td>${vo.userName }</td>
 							<td>${vo.hit}</td>
 							<td>${vo.regDate }</td>
-							<c:if test = "${vo.users_no==authUser.no}"><td><a href="" class="del">삭제</a></td></c:if>
+							<c:if test = "${vo.userNo == authUser.no}"><td><a href="${pageContext.request.contextPath }/board?a=delete&no=${vo.no}" class="del">삭제</a></td></c:if>
 						</tr>
 						</c:forEach>
 				</table>
@@ -57,8 +59,8 @@
 						<li><a href="">1</a></li>
 						<li><a href="">2</a></li>
 						<li class="selected">3</li>
-						<li>4</li>
-						<li>5</li>
+						<li><a href="">4</a></li>
+						<li><a href="">5</a></li>
 						<li><a href="">▶</a></li>
 					</ul>
 				</div>				
