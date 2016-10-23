@@ -111,6 +111,24 @@ public class BoardDao {
 	
 	
 	
+	public void update(){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+	
+		try {
+			conn = getConnection();
+			String sql = "";
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	}
+	
+	
 	public void delete(Long no) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;

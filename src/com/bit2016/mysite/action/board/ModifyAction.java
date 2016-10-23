@@ -35,7 +35,7 @@ public class ModifyAction implements Action {
 
 			request.setAttribute("list", vo);
 			
-			
+
 			WebUtil.forward(request, response, "/WEB-INF/views/board/modify.jsp");
 			System.out.println("modifyaction");
 		}
