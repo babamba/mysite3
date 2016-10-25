@@ -1,17 +1,74 @@
 @CHARSET "UTF-8";
 @import "mysite.css";
 
+body{
+	font-family: '맑은 고딕' 돋움; 
+	border
+}
+
 #guestbook			{ margin:20px auto;	width:540px; }
 
+#guestbook h1{
+		
+		font-size:1.8em;
+		text-align:center;
+		padding:2px 2px 15px 2px;
+		color:#080808;
+		
+}
+
 #guestbook form, 
-#guestbook table	{ width:100% }
+#guestbook table	{ width:100%;
+					  border:1px normal #333;
+					  border-collapse:collapse;
+					  cellspacing:0;
+					  cellpadding:10px;
+					  border-left-width:0;
+					  border-right-width:0;
+					}
+					
+#guestbook tr td 
+input[name="name"], input[name="pass"]  {
+	padding: 0px;
+	width: 522px;
+	border:0px;
+	margin:2px;
+}
 
-#guestbook table,	
-#guestbook table td { border:1px solid #333 }
-#guestbook table td { padding:5px }
+#guestbook tr td 
+input[name="submit"] {
+		font-family:Sans-serif;
+		color:#F3F3F3;
+		border-collapse:collapse;
+		margin:0px;
+		padding:5px 7px;
+		font-align:center;
+		background-color:#101010;
+		
+}
+#guestbook table tr td span{
+							font-size:1.6em;
+							color:#4D4D4D;  
+							font-weight: bold;
+							}
+							
+#guestbook table tr td{ padding:6px; margin:2px;}
 
-#guestbook ul		{ width:100%; margin-top:20px }
+
+#guestbook table td { width:1px; margin:2px; border:1px solid #CBCBCB;
+					}
+					
+#guestbook table tr {border-collapse:collapse;
+					  margin:2px; width:5px;
+					}
+#guestbook table tr .submit{
+	border:0px;
+}
+
 #guestbook ul li	{ width:100%; margin-top:10px }
+
+#guestbook ul		{ width:100%; margin-top:20px;
+					 }
 
 
 #guestbook.delete-form	{ height:200px }

@@ -13,22 +13,27 @@
 <link href="${pageContext.request.contextPath}/assets/css/guestbook.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+	
+
 	<div id="container">
 		<c:import url = "/WEB-INF/views/includes/header.jsp"/>
 	<div id="content">
 		<div id="guestbook">
+			<h1>방명록</h1>
 				<form action="/mysite3/guestbook" method="post">
 					<input type="hidden" name="a" value="add">
 					<table>
 						<tr>
-							<td>이름</td><td><input type="text" name="name"></td>
-							<td>비밀번호</td><td><input type="password" name="pass"></td>
+							<td><input type="text" name="name" placeholder="이름"></td>
 						</tr>
+						<tr>
+							<td><input type="password" name="pass" placeholder="비밀번호"></td>
+							</tr>				
 						<tr>
 							<td colspan=4><textarea name="content" id="content"></textarea></td>
 						</tr>
-						<tr>
-							<td colspan=4 align=right><input type="submit" VALUE=" 확인 "></td>
+						<tr class="submit">
+						<td><input type="submit" name="submit" VALUE="submit"></td>
 						</tr>
 					</table>
 				</form>
@@ -38,13 +43,13 @@
 					<li>	
 						<table width=510 border=1>
 							<tr>
-								<td>[${count - status.index}]</td>
-								<td>${vo.name }</td>
-								<td>${vo.date }</td>
-								<td><a href = "/mysite3/guestbook?a=deleteform&no=${vo.no}">삭제</a></td>
-							</tr>
+								<td><span>${vo.name }</span>${count - status.index}번째 글 ${vo.date}</td>
 							<tr>
 							<td colspan=4>${fn:replace(vo.content, newLine, "<br>")}</td>
+							</tr>
+							<tr>
+								<td><a href = "/mysite3/guestbook?a=deleteform&no=${vo.no}">삭제</a>
+							</td>
 							</tr>
 						</table>
 						<br>
