@@ -9,9 +9,9 @@ body{
 #guestbook			{ margin:20px auto;	width:540px; }
 
 #guestbook h1{
-		
+		background:url('/mysite3/asset/images/guest.png')
 		font-size:1.8em;
-		text-align:center;
+		text-align:left;
 		padding:2px 2px 15px 2px;
 		color:#080808;
 		

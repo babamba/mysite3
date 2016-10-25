@@ -43,7 +43,7 @@
 					<li>	
 						<table width=510 border=1>
 							<tr>
-								<td><span>${vo.name }</span>${count - status.index}번째 글 ${vo.date}</td>
+								<td><span>${vo.name }&nbsp</span>&nbsp&nbsp${count - status.index}번째 글&nbsp&nbsp ${vo.date}&nbsp</td>
 							<tr>
 							<td colspan=4>${fn:replace(vo.content, newLine, "<br>")}</td>
 							</tr>
