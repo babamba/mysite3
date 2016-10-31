@@ -74,6 +74,55 @@ public class UserDao {
 		return vo;
 	}
 	
+	
+	//이메일 체크
+	public UserVo get(String email){
+		UserVo vo = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = getConnection();
+			
+			String sql = "select no, email, name from USERS where email=?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				vo = new UserVo();
+				vo.setNo(rs.getLong(1));
+				vo.setEmail(rs.getString(2));
+				vo.setName(rs.getString(3));
+			}
+			
+			
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		} finally {
+			try {
+				if(rs != null){
+					rs.close();
+				}
+				if(pstmt != null){
+					pstmt.close();
+				}
+				if(conn != null){
+					conn.close();
+				}
+				
+			} catch (SQLException e) {
+				System.out.println("error :" + e);
+			}
+		}
+		
+		
+		return vo;
+	}
+	
+	
 
 	// 회원정보 수정
 	public UserVo get(Long no)	{
