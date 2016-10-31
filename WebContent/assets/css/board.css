@@ -41,8 +41,9 @@ input#kwd	{
 
 .tbl-ex th, 
 .tbl-ex td	{ 
-	padding:8px;
-	text-align:center; 	 
+	padding:3px;
+	text-align:center; 	
+	color:#000;  
 }
 
 .tbl-ex td.left {
@@ -54,7 +55,7 @@ input#kwd	{
 	border-bottom:2px solid #333; 
 	background-color:#999; 
 	font-size:1.1em; 
-	color:#fff 
+	color:#999; 
 }
 
 .tbl-ex td {
@@ -70,6 +71,7 @@ input#kwd	{
 	text-align:right;
 	font-weight:bold;
 	width:60px; 
+	font-size:1.2em;
 }
 
 .board-form .tbl-ex input[ name='title' ] {
