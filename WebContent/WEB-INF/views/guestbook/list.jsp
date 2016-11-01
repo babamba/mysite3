@@ -11,7 +11,6 @@
 <title>mysite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link href="${pageContext.request.contextPath}/assets/css/guestbook.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -34,7 +33,7 @@
 						</tr>
 						<tr>
 							<td >
-							<textarea name="content" id="content" placeholder="글을 작성해 주세요"></textarea></td>
+							<textarea name="content" id="inputcontent" placeholder="글을 작성해 주세요"></textarea></td>
 						</tr>
 						<tr class="submit">
 							<td><input type="submit" name="submit" VALUE="submit"></td>
