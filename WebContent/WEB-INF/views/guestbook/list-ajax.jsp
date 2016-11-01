@@ -21,7 +21,7 @@
 		// 현업에서는 이부분을 template library ex) ejs
 		
 		var htmls = 
-				"<li id='gb-'><table width=510 border=1>"
+				"<li id='gb-'" + vo.no + "><table width=510 border=1>"
 				+ "<tr><td><span>"
 				+ vo.name
 				+ "&nbsp</span>&nbsp&nbsp"
@@ -78,7 +78,76 @@
 		}
 
 	$(function() {
+		$(".errormessage").hide();
+		var $no = null;
 		
+/* 		//삭제버튼 click event
+		$(document).on("click","#list-guestbook li a", function( event ){
+			event.preventDefault();
+			$no= $(this).parent().attr("id");
+			dialog.dialog( "open" );
+			
+		}); */
+		
+		var deleteGuestbook = function(){
+			
+		      if($("#password").val() == "") {
+		    	    $(".errormessage").show();
+					$(".errormessage").html("<font color=blue><strong>비밀번호를 입력하세요.</strong></font>");
+		    	  return;
+		      }
+		      
+			no = $no.replace("gb-","");
+			
+			$.ajax({
+				url: "${pageContext.request.contextPath }/api/guestbook",
+				type: "post",
+				dataType: "json",
+				data: "a=ajax-delete&no=" + no +"&password=" + $("#password").val() ,
+				success: function(response) {		// response.result = "success" or "fail"
+													// response.data = [{},{},{}....]
+					if(response.result != "success"){
+						console.error(response.message);
+						$(".errorMsg").show();
+						$(".errorMsg").html("<font color=red><strong>비밀번호가 일치하지 않습니다.</strong></font>");
+						isEnd = true;
+						$("#password").val("").focus();
+						return;
+					}
+					console.log(response.data);
+					$("#gb-" + response.data).remove();
+					dialog.dialog( "close" );
+				},
+				error: function(jqXHR, status, e) {
+					console.error(status + ":" + e);
+				}
+			});
+		};
+		dialog = $( "#dialog-form" ).dialog({
+		      autoOpen: false,
+		      height: 400,
+		      width: 350,
+		      modal: true,
+		      buttons: {
+		    	  
+		        "삭제하기": deleteGuestbook,
+		        Cancel: function() {
+		          dialog.dialog( "close" );
+		        }
+		      },
+		      close: function() {
+			       	  form[ 0 ].reset();
+		          $(".errormessage").hide();
+		       // allFields.removeClass( "ui-state-error" );
+		      }
+		    });
+		 
+		    form = dialog.find( "form" ).on( "submit", function( event ) {
+			      event.preventDefault();
+			      //addUser();
+		      deleteGuestbook();
+		    }); 
+		    
 		//입력
 		$("#add-form").submit(function(){
 			event.preventDefault();
@@ -153,7 +222,9 @@
 </script>
 </head>
 <body>
-
+		<div id="dialog-form" title="삭제">
+				<p class="errormessage"></p>
+		</div>
 
 	<div id="container">
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
@@ -183,15 +254,13 @@
 					</div>
 						<ul id="list-guestbook"></ul>
 							<form>
-							    <input type="password" id="password-delete" value="" class="text ui-widget-content ui-corner-all">
+							    <input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all">
 								<input type="hidden" id="hidden-no" value="">
 								<input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
 							</form>
 					</div>
 					
-			<div id="dialog" title="비밀번호를 입력하세요">
-				<p></p>
-			</div>
+			
 			
 			
 		<c:import url="/WEB-INF/views/includes/navigation.jsp">
